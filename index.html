@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>শুধু তোমার জন্য 🌸</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      background: url('https://a-static.besthdwallpaper.com/sweet-couple-watching-sunset-together-wallpaper-2400x1350-122800_50.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    .overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 999;
+    }
+    .overlay button {
+      background: #f50057;
+      color: #fff;
+      padding: 20px 50px;
+      border: none;
+      font-size: 22px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px 20px;
+      border-radius: 25px;
+      max-width: 90%;
+      margin: 50px auto;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      animation: fadeIn 2s ease;
+      visibility: hidden;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    h1 {
+      font-size: 30px;
+      color: #ff4081;
+      animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #fff;
+    }
+    .signature {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 20px;
+      color: #ff80ab;
+    }
+    .typing {
+      margin-top: 20px;
+      color: #f06292;
+      font-size: 18px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay" id="overlay">
+    <button id="startBtn">চাপ দাও শুরু করার জন্য 🎵</button>
+  </div>
+
+  <div class="card" id="mainCard">
+    <h1>🌸 শুধু তোমার জন্য...</h1>
+    <p>
+      তুমি আমার ছোট ছোট ভালো লাগার বিশাল একটা কারণ...<br><br>
+      তোমার হাসিতে আমার পৃথিবী রঙিন হয়ে যায়,<br>
+      তোমার চোখে আমি আমার ভবিষ্যৎ দেখি।<br><br>
+      আমি জানি না অন্যরা ভালোবাসা কীভাবে দেখে...<br>
+      কিন্তু আমার কাছে ভালোবাসা মানেই "তুমি"।<br><br>
+      তুমি ছাড়া আমি অসম্পূর্ণ...<br>
+      আমি চিরকাল তোমার পাশে থাকতে চাই 💖
+    </p>
+    <div class="signature">— তোমার শাহরিয়ার 🌙</div>
+    <div class="typing" id="typingText"></div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <!-- ইউটিউব থেকে ডাউনলোড করা বা অন্য ভালো URL -->
+    <source src="Untitled video - Made with Clipchamp (2).mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+<script>
+  const text = "তুমি জানো? প্রতিদিন আমি তোমায় একটু একটু করে আরও বেশি ভালোবাসি... ❤️";
+  let i = 0;
+  const typingText = document.getElementById('typingText');
+  const mainCard = document.getElementById('mainCard');
+  const overlay = document.getElementById('overlay');
+  const startBtn = document.getElementById('startBtn');
+  const music = document.getElementById('bgMusic');
+
+  function typeWriter() {
+    if(i < text.length){
+      typingText.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 80);
+    }
+  }
+
+  startBtn.addEventListener('click', () => {
+    overlay.style.display = 'none';
+    mainCard.style.visibility = 'visible';
+    music.muted = false;
+    music.volume = 0.4;
+    music.play().catch(e => {
+      console.log('Music play blocked:', e);
+    });
+    typeWriter();
+  });
+</script>
+
+</body>
+</html>
